@@ -1,9 +1,3 @@
-# bootstrap-backend.tf
-
-provider "aws" {
-  region = "us-east-2"
-}
-
 resource "aws_s3_bucket" "terraform_backend" {
   bucket = "terraformstate-vprofile"
   # versioning {
@@ -16,8 +10,8 @@ resource "aws_s3_bucket" "terraform_backend" {
 
 # Optional: create an empty folder (prefix) by uploading a placeholder
 resource "aws_s3_object" "terraform_folder" {
-  bucket = aws_s3_bucket.terraform_backend.bucket
-  key    = "terraform/"
+  bucket  = aws_s3_bucket.terraform_backend.bucket
+  key     = "terraform/"
   content = ""
 }
 
