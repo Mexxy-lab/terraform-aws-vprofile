@@ -59,7 +59,8 @@
     - Reinitialize your repository so Terraform can pick up the change, follow the instructions to copy backend state to remote location
 
         ```bash
-        terraform init
+        terraform init -migrate-state               | Would migrate the backend file from remote to local. You should see a terraform.tfstate now. 
+        terraform init -reconfigure
         ```
     - To revert back to local, just delete the content of the backend statefile and reinitialize the repository. 
 
