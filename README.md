@@ -20,6 +20,7 @@
     - Run below command to verify the plan and initialize your project 
 
         ```bash
+        cd terraform-infra
         terraform init
         terraform fmt
         terraform validate
