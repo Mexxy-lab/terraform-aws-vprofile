@@ -21,4 +21,21 @@
 
         ```bash
         terraform init
+        terraform fmt
+        terraform validate
+        terraform plan 
+        terraform apply --auto-approve
         ```
+## Update the project application files in the repository with the backend services public ip
+
+    - Update the src/main/resources/application.properties with the endpoint for Active mq, rds and elastic cache services
+    - Also update the corresponding users and passwords configured for the back end services
+    - Build your artifacts for deployment using the below shell command 
+    
+        ```bash
+        mvn install
+        ```
+
+## Upload artifacts to beanstalk service and access the application. 
+
+!!! Enjoy thats all for today. 

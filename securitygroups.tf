@@ -75,6 +75,14 @@ resource "aws_security_group" "vprofile-backend-sg" {
     security_groups = [aws_security_group.vprofile-prod-sg.id]
   }
 
+  ingress {
+    from_port       = 3306
+    to_port         = 3306
+    protocol        = "tcp"
+    security_groups = [aws_security_group.vprofile-bastion-sg.id]
+    description     = "Allow MySQL access from specific IP"
+  }
+
   egress {
     from_port   = 0
     to_port     = 0
