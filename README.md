@@ -39,4 +39,28 @@
 
 ## Upload artifacts to beanstalk service and access the application. 
 
+    - Upload the vprofile-v2.war artifact to AWS Bealstalk for your use. 
+
+## Set up remote state backend file for state management of infra
+
+    - Create the backend state file. I have called mine backend-s3.tf 
+    - Update it with the right key of s3 bucket to be used 
+            ```bash
+            terraform {
+                backend "s3" {
+                bucket = "terraformstate-vprofile"
+                key    = "terraform/backend"
+                region = "us-east-2"
+                # dynamodb_table = "terraform-lock-table"
+                encrypt = false
+                }
+            }
+            ```
+    - Reinitialize your repository so Terraform can pick up the change, follow the instructions to copy backend state to remote location
+
+        ```bash
+        terraform init
+        ```
+    - To revert back to local, just delete the content of the backend statefile and reinitialize the repository. 
+
 !!! Enjoy thats all for today. 
